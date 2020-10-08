@@ -12,36 +12,38 @@ app.config['MONGO_URI']='mongodb://datastore:27017/pythonmongodb'
 
 client = PyMongo(app)
 
+@app.route('/nuevo',methods=['POST'])
+def nuevo():
+	info=request.data
+	try:
+		id=client.db.machine.insert(
+			{'autor':info['autor'],'nota':info['nota']}	
+		)
+		return({'exito':1})
+	except:
+		return({'exito':0})
+	
 
 @app.route('/informacion', methods = ['GET'])
 def informacion():
-	try:
-		with open('/usr/src/ramsopes.txt') as ramContent:
-			resultado=json.loads(ramContent)
-			usedRam=str(resultado['used'])
+	file=open('/app/ramsopes.txt','r')
+	contenidoRam=file.read()
+	resultado=json.loads(contenidoRam)
+	usedRam=str(resultado['used'])
+        
+	file=open('/app/cpusopes.txt','r')
+	contenidoCPU=file.read()
+	resultado=json.loads(contenidoCPU)
+	usedCPU=str(resultado['used'])
+        
+	info={
+		'ram_used':usedRam,
+		'cpu_used':usedCPU,
+		'cantidad':client.db.machine.count_documents({})
+	}
+	
+	return (info)
 
-		with open('/usr/src/cpusopes.txt') as cpuContent:
-			resultado=json.loads(cpuContent)
-			usedCPU=str(resultado['used'])
-
-		info={
-			'ram_used':usedRam,
-			'cpu_used':usedCPU,
-			'cantidad':client.db.machine.count_documents({})
-		}
-		return(info) 
-		pass
-	except Exception as e:
-		print('Error')
-
-
-	id=client.db.machine.insert(
-		{'RAM':'23%','PROCESSOR':'24%'}	
-	)
-	respuesta={
-		'mirespuesta':1,
-		'id_mongo':id
-		}
 	_items =client.db.machine.find()
 	items=[item for item in _items]
 	

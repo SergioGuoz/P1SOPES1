@@ -19,7 +19,7 @@ static int meminfo_proc_show(struct seq_file *m, void *v)
     seq_printf(m, "{");
     seq_printf(m, "\"ram\": %8lu,",K(i.totalram)/1024);
     seq_printf(m, "\"used\": %8lu,",(K(i.totalram)-K(i.freeram))/1024);
-    seq_printf(m, "\"free\": %8lu,",K(i.freeram)/1024);
+    seq_printf(m, "\"free\": %8lu",K(i.freeram)/1024);
     seq_printf(m, "}");
 #undef K
     return 0;
