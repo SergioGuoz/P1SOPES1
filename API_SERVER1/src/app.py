@@ -3,7 +3,7 @@ import json
 import logging
 import os
 import requests
-import simplejson
+
 
 from flask_cors import CORS
 
