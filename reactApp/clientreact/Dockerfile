@@ -1,10 +1,9 @@
-FROM node:latest
-
+FROM tiangolo/node-frontend:10
 WORKDIR /app
-
-COPY . .
-
-RUN npm install && npm build
+COPY package*.json /app/
+RUN npm install
+COPY ./ /app/
+RUN npm run build
 
 FROM nginx:alpine
 
