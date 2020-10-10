@@ -54,8 +54,8 @@ while True:
 
 	elif opcionMenu=="2":
 		print("")
-		pathFile=raw_input("Ingresa la direccion url:")
-		print("La url es:",pathFile)
+		direccion=raw_input("Ingresa la direccion url:")
+		print("La url es:",direccion)
 		raw_input("Presiona enter para continar. ")
 
 	elif opcionMenu=="3":
@@ -69,9 +69,9 @@ while True:
 				print("sending... ",nota);
 				respuesta=requests.post(direccion,json=nota,headers={"Content-Type":"application/json"})
 				print('Respuesta: ',respuesta.text)
-			pass
+			
 		except Exception as e:
-			print('Ocurrio un error al enviar datos')
+			print('Ocurrio un error al enviar datos',e)
 		
 		raw_input("Presione enter para continuar")
 		
@@ -79,6 +79,7 @@ while True:
 		break
 	else:
 		#/home/sergio/Escritorio/SOPES1/P1SOPES1/prueba.txt
+		#http://localhost:3000/nuevo
 		#C:\Users\sergi\Desktop\SOPES1_P1\prueba.txt
 		print ("")
 		raw_input("Opcion Incorrecta")
