@@ -34,10 +34,10 @@ class Elementos extends Component{
     servidordos(){
         console.log("Presionando Dos");
         
-        let url='http://34.72.179.225:3100/elementos';
+        let url='http://35.223.45.137:3000/elementos';
         axios.get(url)
         .then(response=>{
-            console.log(response);
+            console.log(response.data);  
             this.setState({notas:response.data,errorMsg:''})
         }).catch(error=>{
             console.log("ERROR ",error)

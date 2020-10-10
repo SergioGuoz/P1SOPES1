@@ -23,10 +23,10 @@ def nuevo():
 	print(datos)
 	respuesta=""
 	url_infoa='http://34.72.179.225:3000/informacion'
-	url_infob='http://34.72.179.225:3000/informacion'
+	url_infob='http://35.223.45.137:3000/informacion'
 	
 	url_posta='http://34.72.179.225:3000/nuevo'
-	url_postb='http://34.72.179.225:3000/nuevo'
+	url_postb='http://35.223.45.137:3000/nuevo'
 
 	server1a=requests.get(url_infoa)
 	infoA=json.loads(server1a.text)

@@ -33,7 +33,7 @@ class GraficaCPU extends Component{
         this.interval = setInterval(() => 
         {
             let url='http://34.72.179.225:3000/cpu';
-            let urlb='http://34.72.179.225:3000/cpu';
+            let urlb='http://35.223.45.137:3000/cpu';
 
 
             axios.get(url)
@@ -75,7 +75,7 @@ class GraficaCPU extends Component{
                 this.setState({errorMsg:'Sin datos',notas:[]})
             });
 
-            axios.get(url)
+            axios.get(urlb)
             .then(response=>{
                 console.log(response.data);
                 let {datosA,datosB,cantidadA}=this.state;
